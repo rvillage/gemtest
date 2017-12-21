@@ -1,0 +1,57 @@
+version: 2
+
+default: &default
+  working_directory: /usr/src/app
+  docker:
+    - image: ruby:2.4.2-alpine3.6
+
+jobs:
+  checkout_code:
+    <<: *default
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: /usr/src/app
+          paths:
+            - ./*
+
+  bundle_dependencies:
+    <<: *default
+    steps:
+      - attach_workspace:
+          at: /usr/src/app
+      - restore_cache:
+          keys:
+            - v1-bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - v1-bundler-
+      - run: bundle install -j4 --retry=3 && bundle clean
+      - save_cache:
+          key: v1-bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+
+  auto_correction:
+    <<: *default
+    steps:
+      - attach_workspace:
+          at: /usr/src/app
+      - restore_cache:
+          key: v1-bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - run: apk --update --upgrade add --no-cache git openssh curl
+
+workflows:
+  version: 2
+
+  workflow:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - auto_correction:
+          requires:
+            - bundle_dependencies
+          filters:
+            branches:
+              ignore:
+                - /ci\/.*/

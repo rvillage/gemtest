@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  ruby:
+    image: ruby:2.4.2-alpine3.6
+    container_name: gemtest_ruby
+    command: ruby -v
+    volumes:
+      - .:/usr/src/app
