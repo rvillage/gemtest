@@ -1,0 +1,11 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5
+    steps:
+      - checkout
+      - run: bundle install -j4 --retry=3
+      - run: rubocop --auto-correct || true
+      - run: pr-daikou
