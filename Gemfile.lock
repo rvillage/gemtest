@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rvillage/rubocop-automata.git
-  revision: d54b4b535a65f2b15f4895a26282ea792078ffb4
+  revision: c41d1c152e0aa61741322fe374189fa2e29ff9b7
   specs:
     rubocop-automata (0.0.1)
       rubocop
