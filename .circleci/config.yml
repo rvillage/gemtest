@@ -39,6 +39,7 @@ jobs:
       - restore_cache:
           key: v1-bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - run: apk --update --upgrade add --no-cache git openssh curl
+      - run: rubocop-automata 22555788+rvillage-ci@users.noreply.github.com rvillage-ci
 
 workflows:
   version: 2
