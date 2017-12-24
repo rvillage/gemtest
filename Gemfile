@@ -3,4 +3,4 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'rubocop-automata', git: 'https://github.com/rvillage/rubocop-automata.git'
+gem 'rubocop-automata'
