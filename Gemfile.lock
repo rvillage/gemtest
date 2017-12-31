@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/rvillage/rubocop-automata.git
+  revision: d5f3f7ab847b87345bfd02d245089322b5d3040c
+  branch: feedback
+  specs:
+    rubocop-automata (0.0.3)
+      rubocop (~> 0.51)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -6,7 +14,6 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     powerpack (0.1.1)
-    pr-daikou (0.0.1)
     rainbow (3.0.0)
     rubocop (0.52.1)
       parallel (~> 1.10)
@@ -22,8 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pr-daikou
-  rubocop
+  rubocop-automata!
 
 BUNDLED WITH
    1.16.1

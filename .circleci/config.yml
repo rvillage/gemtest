@@ -7,5 +7,4 @@ jobs:
     steps:
       - checkout
       - run: bundle install -j4 --retry=3
-      - run: rubocop --auto-correct || true
-      - run: pr-daikou
+      - run: rubocop-automata automata@example.com automata
