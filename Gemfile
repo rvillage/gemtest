@@ -3,5 +3,5 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'pr-daikou'
+gem 'pr-daikou', '0.0.3', path: 'pkg'
 gem 'rubocop'
